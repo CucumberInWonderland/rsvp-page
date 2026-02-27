@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RSVP</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 50px; }
+    form { max-width: 400px; margin: auto; }
+    input, textarea { width: 100%; padding: 10px; margin: 5px 0; }
+    button { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h1>RSVP for Our Event</h1>
+  <form id="rsvp-form">
+    <label>Name:</label>
+    <input type="text" name="name" required>
+    
+    <label>Email:</label>
+    <input type="email" name="email" required>
+    
+    <label>Will you attend?</label>
+    <select name="attending" required>
+      <option value="">Select</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+    
+    <label>Message (optional):</label>
+    <textarea name="message"></textarea>
+    
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="response"></p>
+
+  <script>
+    const form = document.getElementById('rsvp-form');
+    const response = document.getElementById('response');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      response.textContent = "Thank you for your RSVP!";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
