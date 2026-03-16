@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Silas und Katja</title>
   <style>
     body {
       margin:0;
-      height:100vh;
+      min-height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
-      font-family:Arial, sans-serif;
+      font-family:Arial;
     
       /* background image */
       background-image:url("test2.jpg");
@@ -33,9 +34,26 @@
       height:750px;
       border:none;
     }
-    h1 {
-    text-align:center;
-  }
+  /* MOBILE OPTIMIZATION */
+  @media (max-width:600px){
+  
+    body{
+      align-items:flex-start;
+      padding-top:20px;
+    }
+  
+    .form-container{
+      width:100%;
+      max-width:none;
+      padding:15px;
+      border-radius:0;
+    }
+  
+    iframe{
+      height:1000px;
+    }
+
+}
   </style>
 </head>
 <body>
