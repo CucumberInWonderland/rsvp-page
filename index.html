@@ -11,22 +11,21 @@
   </style>
 </head>
 <body>
-  <h1>RSVP for Our Event</h1>
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdBKEVLDNHEqysGi_9qdii0uEhP_MovNrV2mmYvKcnUbOCyMA/viewform?embedded=true" width="640" height="764" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  <h1>Rückmeldung für unsere Hochzeit</h1>
   <form id="rsvp-form">
     <label>Name:</label>
     <input type="text" name="name" required>
     
-    <label>Email:</label>
-    <input type="email" name="email" required>
-    
-    <label>Will you attend?</label>
+    <label>Wirst du kommen?</label>
     <select name="attending" required>
       <option value="">Select</option>
-      <option value="yes">Yes</option>
-      <option value="no">No</option>
+      <option value="yes">Ja</option>
+      <option value="no">Nein</option>
     </select>
     
-    <label>Message (optional):</label>
+    <label>zusätzliche Informationen:</label>
     <textarea name="message"></textarea>
     
     <button type="submit">Submit</button>
@@ -40,7 +39,7 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      response.textContent = "Thank you for your RSVP!";
+      response.textContent = "Danke für deine Rückmeldung!";
       form.reset();
     });
   </script>
