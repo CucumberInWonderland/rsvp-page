@@ -23,7 +23,8 @@
   <textarea name="Bemerkung" placeholder="Message"></textarea>
   
   <button type="submit">Send RSVP</button>
-  
+    
+  <p id="status"></p>
   </form>
 </body>
 </html>
@@ -31,7 +32,7 @@
   const scriptURL = "https://script.google.com/macros/s/AKfycbzjsfn1DDdrEFF9skoA6k9Ik6y_xAj9cgVZApGkdNUnoLNQcAR0LSgkvycgys3Tedt0oA/exec";
   const form = document.getElementById("rsvpForm");
   const status = document.getElementById("status");
-  
+
   form.addEventListener("submit", e => {
     e.preventDefault();
   
@@ -39,14 +40,19 @@
   
     fetch(scriptURL, {
       method: "POST",
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
+    .then(res => res.json())
     .then(() => {
       status.innerText = "Thank you! RSVP received.";
       form.reset();
     })
-    .catch(() => {
-      status.innerText = "Error. Please try again.";
+    .catch(err => {
+      status.innerText = "Error submitting form";
+      console.error(err);
     });
   });
 </script>
