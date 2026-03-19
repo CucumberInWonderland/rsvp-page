@@ -50,27 +50,40 @@ h1{
   margin-bottom:25px;
 }
 
-/* inputs */
-input, select, textarea{
+input, select, textarea, button{
   width:100%;
   padding:14px;
   margin:10px 0;
   border-radius:8px;
+  font-size:16px;
+  box-sizing:border-box;   
+}
+
+/* unify borders/background */
+input, select, textarea{
   border:1px solid rgba(255,255,255,0.6);
   background:rgba(255,255,255,0.6);
-  font-size:16px;
   backdrop-filter: blur(5px);
 }
 
+select, button{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+}
+
+select{
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>");
+  background-repeat:no-repeat;
+  background-position:right 10px center;
+  background-size:16px;
+}
+  
 /* button */
 button{
-  width:100%;
-  padding:14px;
   border:none;
-  border-radius:8px;
   background:#2c2c2c;
   color:white;
-  font-size:18px;
   cursor:pointer;
   transition:0.3s;
 }
