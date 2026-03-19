@@ -1,123 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Silas und Katja</title>
-  <style>
-  
-  body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:Arial, sans-serif;
-  
-    background-image:url("test2.jpg");
-    background-size:cover;
-    background-position:center;
-  }
-  
-  /* card */
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Silas & Katja</title>
+
+<!-- Wedding font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-family:'Inter', sans-serif;
+
+  background-image:url("test2.jpg");
+  background-size:cover;
+  background-position:center;
+}
+
+/* glass card */
+.card{
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  background:rgba(255,255,255,0.25);
+  border:1px solid rgba(255,255,255,0.3);
+
+  padding:45px;
+  border-radius:18px;
+  width:420px;
+  max-width:90%;
+
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  text-align:center;
+  color:#222;
+}
+
+/* wedding title */
+h1{
+  font-family:'Playfair Display', serif;
+  font-size:32px;
+  margin-bottom:25px;
+}
+
+/* inputs */
+input, select, textarea{
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.6);
+  background:rgba(255,255,255,0.6);
+  font-size:16px;
+  backdrop-filter: blur(5px);
+}
+
+/* button */
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:8px;
+  background:#2c2c2c;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#444;
+}
+
+/* disabled look */
+button:disabled{
+  background:#888;
+  cursor:not-allowed;
+}
+
+/* success message */
+#success{
+  display:none;
+  margin-top:20px;
+  font-size:18px;
+  color:#1b5e20;
+  font-weight:500;
+}
+
+/* mobile */
+@media (max-width:600px){
   .card{
-    background:rgba(255,255,255,0.92);
-    padding:40px;
-    border-radius:12px;
-    width:420px;
-    max-width:90%;
-    box-shadow:0 15px 40px rgba(0,0,0,0.3);
-    text-align:center;
+    padding:25px;
   }
-  
-  /* inputs */
+
+  h1{
+    font-size:26px;
+  }
+
   input, select, textarea{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border-radius:6px;
-    border:1px solid #ccc;
-    font-size:16px;
+    font-size:18px;
   }
-  
-  /* button */
+
   button{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:6px;
-    background:#333;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
+    font-size:20px;
   }
-  
-  button:hover{
-    background:#555;
-  }
-  
-  /* success message */
-  #success{
-    display:none;
-    color:green;
-    margin-top:15px;
-    font-size:18px;
-  }
-  
-  /* mobile */
-  @media (max-width:600px){
-    .card{
-      padding:25px;
-      width:95%;
-    }
-  
-    input, select, textarea{
-      font-size:18px;
-      padding:14px;
-    }
-  
-    button{
-      font-size:20px;
-    }
-  }
-  
-  </style>
-  </head>
-  <body>
-    <div class="card">
+}
 
-      <h2>Rückmeldung für unsere Hochzeit</h2>
-      
-      <form action="https://script.google.com/macros/s/AKfycbx_K__Vn8_jt2wI6MYUkhimGuQfRIMruiBy7M8pH6ZUm-ttdmvU0wTsKKp0BUUzgWXjGw/exec" method="POST" id="rsvpForm"
-        target="hidden_iframe" onsubmit="showMessage()">
-      
-      <input name="Name" placeholder="Name" required>
-    
-      <select name="Komme" required>
-        <option value="">Wirst du kommen?</option>
-        <option value="Yes">Ja</option>
-        <option value="No">Nein</option>
-      </select>
-      
-      <input name="Anzahl" placeholder="Anzahl der Gäste">
-      
-      <textarea name="Bemerkung" placeholder="weitere Informationen (optional)"></textarea>
-      
-      <button type="submit">Rückmeldung senden</button>
-      
-      </form>
-      <p id="success">Danke, wir haben eure Rückmeldung erhalten</p>
-    </div>
+</style>
+</head>
 
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
-    
-    <script>
-    function showMessage(){
-      setTimeout(() => {
-        document.getElementById("success").style.display = "block";
-      }, 500);
-    }
-    </script>
-    
-  </body>
+<body>
+
+<div class="card">
+
+<h1>Silas & Katja</h1>
+
+<form 
+id="rsvpForm"
+action="https://script.google.com/macros/s/AKfycbx_K__Vn8_jt2wI6MYUkhimGuQfRIMruiBy7M8pH6ZUm-ttdmvU0wTsKKp0BUUzgWXjGw/exec"
+method="POST"
+target="hidden_iframe"
+onsubmit="handleSubmit()"
+>
+
+<input name="Name" placeholder="Your Name" required>
+
+<select name="Komme" required>
+  <option value="">Will you attend?</option>
+  <option value="Yes">Joyfully, yes</option>
+  <option value="No">Sadly, no</option>
+</select>
+
+<input name="Anzahl" placeholder="Number of guests">
+
+<textarea name="Bemerkung" placeholder="Message"></textarea>
+
+<button type="submit" id="submitBtn">Send RSVP</button>
+
+</form>
+
+<p id="success">Thank you! We can’t wait to celebrate with you 🤍</p>
+
+</div>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<script>
+
+function handleSubmit(){
+
+  // disable all fields
+  const form = document.getElementById("rsvpForm");
+  const elements = form.elements;
+
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].disabled = true;
+  }
+
+  // show success message
+  setTimeout(() => {
+    document.getElementById("success").style.display = "block";
+  }, 500);
+}
+
+</script>
+
+</body>
 </html>
