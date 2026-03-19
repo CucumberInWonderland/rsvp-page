@@ -8,7 +8,7 @@
   </style>
 </head>
 <body>
-  <form id="rsvpForm">
+  <form action="https://script.google.com/macros/s/AKfycbzjsfn1DDdrEFF9skoA6k9Ik6y_xAj9cgVZApGkdNUnoLNQcAR0LSgkvycgys3Tedt0oA/exec" method="POST" id="rsvpForm">
   
   <input name="Name" placeholder="Name" required>
 
@@ -28,31 +28,3 @@
   </form>
 </body>
 </html>
-<script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbzjsfn1DDdrEFF9skoA6k9Ik6y_xAj9cgVZApGkdNUnoLNQcAR0LSgkvycgys3Tedt0oA/exec";
-  const form = document.getElementById("rsvpForm");
-  const status = document.getElementById("status");
-
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-  
-    const data = Object.fromEntries(new FormData(form));
-  
-    fetch(scriptURL, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(res => res.json())
-    .then(() => {
-      status.innerText = "Thank you! RSVP received.";
-      form.reset();
-    })
-    .catch(err => {
-      status.innerText = "Error submitting form";
-      console.error(err);
-    });
-  });
-</script>
