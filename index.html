@@ -6,7 +6,8 @@
 
 <title>Silas & Katja</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<!-- Wedding font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter&display=swap" rel="stylesheet">
 
 <style>
 
@@ -16,37 +17,42 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
+
   font-family:'Inter', sans-serif;
+
   background-image:url("background.png");
   background-size:cover;
   background-position:center;
 }
 
+/* glass card */
 .card{
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+
   background:rgba(255,255,255,0.25);
   border:1px solid rgba(255,255,255,0.3);
+
   padding:45px;
   border-radius:18px;
   width:420px;
   max-width:90%;
+
   box-shadow:0 20px 60px rgba(0,0,0,0.25);
   text-align:center;
-  color:#68885b;
+  color:#222;
 }
 
-form{
+  form{
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:14px; 
 }
 
 h1{
-  font-family:'Zapfino', 'Zapf Chancery', cursive;
-  font-size:36px;
+  font-family:'Playfair Display', serif;
+  font-size:32px;
   margin-bottom:25px;
-  color:#68885b;
 }
 
 input, select, textarea, button{
@@ -55,45 +61,40 @@ input, select, textarea, button{
   border-radius:10px;
   font-size:16px;
   box-sizing:border-box;
-  transition: all 0.25s ease;
+  transition: all 0.25s ease; 
 }
 
+/* unify borders/background */
 input, select, textarea{
-  border:1px solid rgba(104,136,91,0.4);
+  border:1px solid rgba(255,255,255,0.6);
   background:rgba(255,255,255,0.6);
   backdrop-filter: blur(6px);
-  color:#68885b;
-}
-
-input::placeholder, textarea::placeholder{
-  color:#68885b;
-  opacity:0.7;
 }
 
 input:focus, select:focus, textarea:focus{
   outline:none;
-  border-color:#68885b;
-  box-shadow:0 0 0 3px rgba(104,136,91,0.25);
+  border-color:#ffffff;
+  box-shadow:0 0 0 3px rgba(255,255,255,0.4);
   background:rgba(255,255,255,0.75);
 }
 
-select{
+select, button{
   appearance:none;
   -webkit-appearance:none;
   -moz-appearance:none;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='%2368885b' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>");
+}
+
+select{
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>");
   background-repeat:no-repeat;
   background-position:right 10px center;
   background-size:16px;
-  background-color:rgba(255,255,255,0.6);
 }
-
+  
 button{
-  appearance:none;
-  -webkit-appearance:none;
   border:none;
-  background:#68885b;
-  color:#e4b873;
+  background:#2c2c2c;
+  color:white;
   cursor:pointer;
   font-size:18px;
   letter-spacing:0.5px;
@@ -102,23 +103,30 @@ button{
 .card{
   animation:fadeInUp 0.8s ease;
 }
-
+  
 @keyframes fadeInUp{
-  from{ opacity:0; transform:translateY(20px); }
-  to{   opacity:1; transform:translateY(0);    }
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
-
+  
 button:hover{
-  background:#556e49;
+  background:#444;
   transform:translateY(-1px);
-  box-shadow:0 6px 20px rgba(104,136,91,0.35);
+  box-shadow:0 6px 20px rgba(0,0,0,0.25);
 }
 
 button:active{
   transform:translateY(1px);
-  box-shadow:0 3px 10px rgba(104,136,91,0.2);
+  box-shadow:0 3px 10px rgba(0,0,0,0.2);
 }
-
+  
+/* disabled look */
 button:disabled,
 input:disabled,
 select:disabled,
@@ -127,25 +135,33 @@ textarea:disabled{
   cursor:not-allowed;
 }
 
+
+::placeholder{
+  color:#555;
+  opacity:0.8;
+}
+  
+/* success message */
 #success{
   display:none;
   margin-top:20px;
   font-size:18px;
-  color:#68885b;
+  color:#1b5e20;
   font-weight:500;
 }
 
+/* mobile */
 @media (max-width:600px){
-  body{
-    background-image:url("background_small.png");
-  }
-
+body{
+  background-image:url("background_small.png");
+}
+  
   .card{
     padding:25px;
   }
 
   h1{
-    font-size:28px;
+    font-size:26px;
   }
 
   input, select, textarea{
@@ -166,7 +182,7 @@ textarea:disabled{
 
 <h1>Silas & Katja</h1>
 
-<form
+<form 
 id="rsvpForm"
 action="https://script.google.com/macros/s/AKfycbx_K__Vn8_jt2wI6MYUkhimGuQfRIMruiBy7M8pH6ZUm-ttdmvU0wTsKKp0BUUzgWXjGw/exec"
 method="POST"
@@ -196,17 +212,17 @@ target="hidden_iframe"
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
 <script>
-  const form = document.getElementById("rsvpForm");
-  const success = document.getElementById("success");
+ const form = document.getElementById("rsvpForm");
+    const success = document.getElementById("success");
 
-  form.addEventListener("submit", function () {
-    setTimeout(() => {
-      Array.from(form.elements).forEach(el => {
-        el.disabled = true;
-      });
-      success.style.display = "block";
-    }, 100);
-  });
+    form.addEventListener("submit", function () {
+      setTimeout(() => {
+        Array.from(form.elements).forEach(el => {
+          el.disabled = true;
+        });
+        success.style.display = "block";
+      }, 100);
+    });
 </script>
 
 </body>
