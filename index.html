@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -189,6 +189,10 @@ method="POST"
 target="hidden_iframe"
 >
 
+<!-- Honeypot field: invisible to humans, bots tend to fill it in -->
+<input type="text" name="Website" id="hp" autocomplete="off" tabindex="-1"
+  style="position:absolute; left:-9999px; top:-9999px; opacity:0; height:0; padding:0; margin:0; border:0;">
+
 <input name="Name" placeholder="Namen" required>
 
 <select name="Komme" required>
@@ -212,17 +216,27 @@ target="hidden_iframe"
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
 <script>
- const form = document.getElementById("rsvpForm");
-    const success = document.getElementById("success");
+  const form = document.getElementById("rsvpForm");
+  const success = document.getElementById("success");
+  const loadTime = Date.now();
 
-    form.addEventListener("submit", function () {
-      setTimeout(() => {
-        Array.from(form.elements).forEach(el => {
-          el.disabled = true;
-        });
-        success.style.display = "block";
-      }, 100);
-    });
+  form.addEventListener("submit", function (e) {
+    const honeypot = document.getElementById("hp").value;
+    const elapsed = (Date.now() - loadTime) / 1000; // seconds since page load
+
+    // Block obvious bots: honeypot filled in, or submitted suspiciously fast
+    if (honeypot !== "" || elapsed < 3) {
+      e.preventDefault();
+      return;
+    }
+
+    setTimeout(() => {
+      Array.from(form.elements).forEach(el => {
+        el.disabled = true;
+      });
+      success.style.display = "block";
+    }, 100);
+  });
 </script>
 
 </body>
